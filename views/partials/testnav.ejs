@@ -1,0 +1,86 @@
+<!-- This page serves as a visual guide to our progress with the application -->
+
+<h3 class="text-center text-danger">Red="Haven't Started" </h3>
+<h3 class="text-center text-warning">Yellow = In progress</h3>
+<h3 class="text-center text-success">Green = Reasonably complete</h3>
+
+<div class="container d-flex flex-column justify-content-evenly col-6">
+
+ <!-- LANDING PAGE -->
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+      <a href="/home" class="btn btn-warning">Landing Page</a>
+    <h5 class="text-center">Completed</h5> 
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+  </div>
+ 
+  <!--   CATEGORIES -->
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+    <div class="d-flex justify-content-evenly">
+      <a href="/cat" class="btn btn-danger">Category List</a>
+      <!-- Arbitrary Category Selected -->
+      <a href="/cat/funny" class="btn btn-danger">Category Post List</a>
+      <!-- Arbitrary Post Selected -->
+      <a href="/cat/funny/1" class="btn btn-danger">Category Post</a>
+    </div>
+    <h5 class="text-center">Completed</h5> 
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+  </div>
+
+  <!--   USER -->
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+    <div class="d-flex justify-content-evenly">
+      <a href="/user" class="btn btn-danger">User List</a>
+      <!-- Arbitrary user Selected -->
+      <a href="/user/JohnJohn" class="btn btn-danger">User Page</a>
+    </div>
+    <h5 class="text-center">Completed</h5> 
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+  </div>
+
+  <!--   SIGNUP -->
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+    <a href="/signup" class="btn btn-warning">SignUP</a>
+    <h5 class="text-center">Completed</h5> 
+    <p>Checks to see if username is taken</p>
+    <p>Checks to see if no special characters in username</p>
+    <p>Username and Password HASH are stored in Remote DB using bcrypt</p>
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+    <p> Styling and Design </p>
+  </div>
+
+  <!-- LOGIN -->
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+    <a href="/login" class="btn btn-warning">Login</a>
+    <h5 class="text-center">Completed</h5> 
+    <p> Datavalidation for username and password </p>
+    <p> Compares hashed password in DB to user input useing bcrypt</p>
+    <p> On successful credential entry 'express-session' is created  </p>
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+    <p>Styling and Design</p>
+  </div>
+  <!-- API -->
+
+  <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+    <div class="d-flex justify-content-evenly">
+      <a href="/api" class="btn btn-danger">APIs List</a>
+      <a href="/api/comment/1" class="btn btn-danger">API Comment Likes</a>
+      <a href="/api/post/1" class="btn btn-danger">APIs Post Likes</a>
+    </div>
+    <h5 class="text-center">Completed</h5> 
+    <hr>
+    <h5 class="text-center">Needs Work</h5> 
+  </div>
+
+  <!-- TEMPLATE -->
+  <!--   <div class="d-flex flex-column justify-content-evenly border border-dark m-3 p-2">
+  <h5 class="text-center">Completed</h5> 
+  <hr>
+  <h5 class="text-center">Needs Work</h5> 
+</div>
+  -->
+</div>

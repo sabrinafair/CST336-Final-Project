@@ -1,0 +1,42 @@
+<%- include('partials/header.ejs') %>
+  <body class="bg-light">
+    <h1 class="text-center">Sign Up Page</h1>
+    <br />
+    <div class="container d-flex flex-column col-6">
+      <form method="POST" action="/signup">
+        <!-- First Name -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="firstName" name="fName" placeholder="Enter First Name" required>
+          <label for="firstName">First Name</label>
+        </div>
+
+        <!-- Last Name -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="lastName" name="lName" placeholder="Enter Last Name" required>
+          <label for="lastName">Last Name</label>
+        </div>
+
+        <!-- Username Feedback-->
+        <% if(typeof passwordFeedback != "undefined") { %>
+            <h5 class="text-danger"><%=passwordFeedback%></h5>
+        <% } %>
+          
+        <!-- Username -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="unameInput" name="username" placeholder="Enter Password" required>
+          <label for="unameInput">Username</label>
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="passInput" name="password" placeholder="Enter Last Password" required>
+          <label for="passInput">Password</label>
+        </div>
+        
+        <!-- SignUp Button -->
+        <button type="submit" class="btn btn-primary mb-3">Sign Up!</button>
+      </form>
+     <a href="/login">Already have an account? <strong>Login!</strong></a>  
+    </div>
+  </body>
+</html>

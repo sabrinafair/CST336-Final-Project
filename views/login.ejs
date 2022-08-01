@@ -1,0 +1,33 @@
+<%- include('partials/header.ejs') %>
+  <body class="bg-light">
+    <h1 class="text-center">Login Page</h1>
+    <br />
+    <div class="container d-flex flex-column col-6">
+      
+      <% if(typeof formFeedback != "undefined") { %>
+        <h5 class="text-danger"><%=formFeedback%></h5>
+      <% } %>
+      <form method="POST" action="/login">
+        
+        <!-- Username -->
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="unameInput" name="username" placeholder="Enter Password" required>
+          <label for="unameInput">Username</label>
+        </div>
+
+        <!-- Password -->
+        <div class="form-floating mb-3">
+          <input type="password" class="form-control" id="passInput" name="password" placeholder="Enter Last Password" required>
+          <label for="passInput">Password</label>
+        </div>
+
+
+        <!-- SignUp Button -->
+        <button type="submit" class="btn btn-primary mb-3">Sign Up!</button>
+      </form>
+      
+      <a href="/signup">Don't have an account? <strong>Sign up!</strong></a>  
+    </div>
+    <script src="/js/loginScript.js"></script> 
+  </body>
+</html>
