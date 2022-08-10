@@ -33,5 +33,5 @@ exports.signup_post = async function(req, res) {
   let results = await executeSQL(sql, parameters);
   console.log(`A User has signed up the the database!: ${username}`);
   
-  res.render("signup", { "message": "Successfully Signed up!" });
+  res.render("login", { "message": "Successfully Signed up!" });
 };

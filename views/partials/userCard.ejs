@@ -1,0 +1,10 @@
+<div class="user-card-container d-flex justify-content-between p-2 shadow-sm rounded-5" style="width:200px;"  >
+  <div class="user-card-left d-flex flex-column mt-2 rounded-5">
+    <img src="/img/profilepics/<%= (session.profilePic != null) ? session.profilePic : 'defaultProfilePic.png' %>" class="user-img img-fluid img-thumbnail user-card" id="uid<%=session.userId%>" alt="ProfilePic" style="max-height: 75px;">
+    <p class="text-center"><%=session.username%></p>
+  </div>
+  <div class="user-card-right d-flex flex-column justify-content-evenly">
+    <a class="accent-btn2 btn btn-primary btn-sm" href="/user/<%=session.username%>">Profile</a>
+    <a class="accent-btn2 btn btn-primary btn-sm" href="/logout">Logout</a>
+  </div>
+</div>

@@ -1,8 +1,183 @@
+body{
+  background-color: #F5F5F5;
+  font-family: 'Josefin Sans', sans-serif;
+}
 
+.logo{
+  width: 300px;
+}
 
+h1, .post-title{
+  font-family:'Short Stack', cursive;
+}
+p{
+  font-family: 'Josefin Sans', sans-serif;
+  color: #71787f;
+}
 
+.forum-name a{
+  text-decoration: none;
+  color: black;
+}
+
+.wave-pic{
+  margin-left: 50px;
+  height: 50px;
+  width: 200px;
+}
+.user-img{
+/*   background-color: #004f94;  */
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* .card-btn{
+    background-color: #004f94; 
+
+} */
+.user-card-left{
+  margin-left: 10px;
+}
+.user-card-right{
+  margin: 10px;
+}
+.user-card-container{
+  height: 115px;
+  background-color: white;
+}
+
+.log-sign-btn{
+  margin-top: 10px;
+}
+
+.accent-btn{
+  background-color: #73c5ed;
+  color: white; 
+}
+
+.accent-btn2{
+  background-color: #004f94; 
+}
 /* ----------------HOME PG-------------------- */
 .category-select{
  display: inline-block;
  width: 150px;
+}
+
+/* .go-button img{
+  width: 25px;
+
+}
+.go-button{
+  margin-bottom: 5px;
+} */
+.title-cat-container{
+  margin: 10px 0;
+}
+.post-btn{
+  margin: 10px 0;
+  float: right;
+}
+
+.new-post-container{
+  padding: 25px 10px 75px 10px;
+}
+
+.rounded-corners{
+ border-radius: 5px;
+  border-width: 0.0125px;
+}
+.post-container{
+/*   background-color: #DBE8E5; */
+  margin: 10px 0; 
+  border-radius: 5px;
+}
+
+.post-info, .post-content{
+  display: inline-block;
+}
+
+.post-content-container p{
+  max-width: 500px;
+}
+
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.username-post-info{
+  color: #0092db;
+}
+.description-posts-section{
+  display: flex;
+  justify-content: space-between;
+}
+.post-info-description p{
+  display: inline-block;
+  margin-bottom: 0;
+  font-size: 12px; 
+}
+
+.post-info-description{
+  display: flex;
+  align-items: end;
+}
+
+.post-info-description{
+  padding: 0 20px;
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+/*   align-items: bottom; */
+}
+/* ----------------USER PG-------------------- */
+.profile-pg-title{
+  margin: 25px 0 0px 0;
+}
+.profile-pic{
+  width: 200px;
+}
+
+.update-prof-btn{
+/*   margin: 20px; */
+  width: 150px;
+/*   background-color: #73c5ed;
+  color: white; */
+
+}
+
+.update-prof-btn a, .update-prof-btn a:hover, .update-prof-btn a:focus, .update-prof-btn a:active {
+     text-decoration: none;
+     color: inherit;
+ }
+
+.user-info{
+  display: inline-block;
+  
+}
+
+p.user-info{
+  font-size: 20px;
+}
+
+.update-input{
+  width: 100%;
+}
+
+
+/* -------------------------SMALL SCREEN-------------------- */
+
+@media only screen and (max-width: 1000px) {
+  .post-info-description{
+    display: none;
+  }
+  .flex-container{
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  p.post-content{
+    margin-bottom: 5px;
+  }
 }

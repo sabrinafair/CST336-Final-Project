@@ -1,0 +1,31 @@
+<%- include('partials/header.ejs') %>
+  <body>
+    <%- include('partials/mainnav.ejs') %> 
+      
+    <div class="d-flex flex-column container">
+      <h2 class="profile-pg-title">Profile</h2>
+      <hr class="mb-5">
+      <img class="profile-pic" src="/img/profilepics/<%=(userInfo[0].profilepic != null) ? userInfo[0].profilepic : 'defaultProfilePic.png'%>"  alt="profile picture">
+
+      <% if (session.username == userInfo[0].username ) { %> 
+        <button class="accent-btn update-prof-btn mx-4 my-4 btn btn-light"><a href="/user/updateUser/<%=session.username%>">Update Profile</a></button>
+        <% } %>
+      <div class="user-info">
+      <h5 class="user-info">Name:&ensp; </h5><p class="user-info"><%=userInfo[0].fName%> <%=userInfo[0].lName%></p>
+<br>
+      <h5 class="user-info">Username:&ensp; </h5><p class="user-info"><%=userInfo[0].username%></p>
+        
+      <h5>Bio:</h5>
+      <p><%= (userInfo[0].bio != null) ? userInfo[0].bio : 'No Bio Yet :(' %></p>
+        
+      </div>
+    
+        
+    </div>
+
+        
+        
+    <script src="/js/userScript.js"></script> 
+
+  </body>
+</html>

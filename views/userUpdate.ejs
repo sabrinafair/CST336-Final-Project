@@ -1,0 +1,38 @@
+<%- include('partials/header.ejs') %>
+  <body>
+    <%- include('partials/mainnav.ejs') %> 
+
+
+      
+    <div class="d-flex flex-column container mb-5">
+      <h2 class="profile-pg-title">User Update</h2>
+      <hr class="mb-3">
+      <form method="POST" action="/user/updateUser/<%=session.username%>" encType="multipart/form-data">
+<!--       Profile Picture Link: <input value="<%= (userInfo[0].profilepic != null) ? userInfo[0].profilepic : '/img/defaultProfilePic.png'%>"></input><br>   -->
+        <div class="user-info">
+      <% if (typeof message != "undefined"){ %>
+        <p class="<%=msgColor %>"><%=message %></p>
+      <% } %>  
+      <div class="mb-4">Upload a new Profile Picture!&nbsp;<input type="file" name="profilePic"/></div>
+      
+      <h5 class="user-info">First Name:&ensp;</h5><input class="form-control" name="fName" value="<%=userInfo[0].fName%>" required></input><br>
+      <h5 class="user-info">Last Name: &emsp;&emsp;&emsp;</h5> <input class="form-control" name="lName" value="<%=userInfo[0].lName%>" required></input><br>
+
+      <h5 class="user-info">Username:&emsp;&emsp;</h5> <input class="form-control" value="<%=userInfo[0].username%>" name="newusername" required></input><br>
+      <h5 class="user-info">Old Password:&emsp;&emsp;</h5> <input type="password" class="form-control" name="oldpass" required></input><br>
+      <h5 class="user-info">New Password:&emsp;&emsp;</h5> <input type="password" class="form-control" name="newpass" required></input><br>
+      <h5 class="user-info">Re-Type Password:&ensp; </h5><input type="password" class="form-control" name="newpass2" required></input><br>
+      <h5 class="user-info">Bio:</h5> <br><textarea class="form-control" name="bio" required><%=userInfo[0].bio%></textarea>  
+      </div>
+        
+        <br><input type='submit' value='Update' class="accent-btn update-prof-btn my-4 btn btn-light"/>
+
+
+      </form>
+    </div>
+
+        
+    <script src="/js/userScript.js"></script> 
+
+  </body>
+</html>

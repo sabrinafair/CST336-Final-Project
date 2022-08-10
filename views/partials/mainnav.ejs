@@ -1,0 +1,15 @@
+<!-- Include this partial in all routes  -->
+    <div class="container d-flex justify-content-between">
+      <div class="top-left-nav">
+<!--       <h1 class="forum-name text-center"><a href="/home">Otter Forum</a></h1> -->
+<!--       <img class="wave-pic" src="/img/waves.png" alt="waves"> -->
+        <a href="/home"><img class="logo" src="/img/otterforumlogo.png" alt="waves"></a>
+      </div>
+<!-- If Authenticated, display profile pic/ logout button -->
+      <% if (typeof session.authenticated != "undefined") { %>
+        <%- include('./userCard.ejs') %>
+<!-- else display Login/Signup buttons -->
+      <% } else { %> 
+        <%- include('./loginSignup.ejs') %>
+      <% } %>
+    </div>

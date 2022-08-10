@@ -1,6 +1,5 @@
 <%- include('partials/header.ejs') %>
-  <body>
-
+<body>
 
 <!-- Modal - Bootstrap says to put above everything else -->
 <div class="modal fade" id="commentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -14,41 +13,56 @@
         <div id="comments"></div>
       </div>
       <div class="modal-footer">
-<!--         <button type="button" class="comment-btn btn btn-dark">Reply</button> -->
+        <% if (typeof session.authenticated != "undefined") { %>
+        <button type="button" id="goto" class="comment-btn btn btn-dark">Reply</button>
+           <% } else { %> 
+        <button disabled type="button" id="goto" class="comment-btn btn btn-dark">Reply</button>
+         <% } %> 
       </div>
     </div>
   </div>
 </div>
-
-
-
-
     
-    <div class="container d-flex justify-content-between">
-      <h1 class="text-center">Otter Forum</h1>
-      <div>
-        <a class="btn btn-primary" href="/login">Login</a>
-        <a class="btn btn-primary" href="/signup">Signup</a>
-      </div>
-    </div>
+ <!-- Logo, Title, Signup/Login OR ProfilePic/Logout
+    include this partial in all routes -->
+  <%- include('partials/mainnav.ejs') %> 
     
 <!-- sf working here -->
     <div class="new-post-container container">
       <h3>Publish a Post</h3>
-      <div class="form-floating">
-        <textarea disabled class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-        <label for="floatingTextarea2">Sign in to make a post :)</label>
-        <button class="btn btn-dark">Post</button>
-      </div>
+      <form action="/home/newPost">
+<!--       <div class="form-floating"> -->
+         <% if (typeof session.authenticated != "undefined") { %>
+           <div class="title-cat-container">
+         Title: <input class="rounded-corners" type="text" name="title" required>  
+         Category: <input class="rounded-corners" type="text" name="category" required>  
+           </div>
+           <div class="form-floating">
+<!--         FORM ELEMENT -->
+        <textarea class="form-control" name="post" id="floatingTextarea2" style="height: 100px" required></textarea>
+        <label for="floatingTextarea2">Start a discussion! :)</label></div>
+           <button class="accent-btn post-btn btn btn-light">Post</button>
+         <% } else { %> 
+            <div class="title-cat-container">
+        Title: <input class="rounded-corners" type="text" disabled>  
+         Category: <input class="rounded-corners" type="text" disabled>  
+            </div>
+           <div class="form-floating">
+        <textarea disabled class="form-control" id="floatingTextarea3" placeholder="Sign in to make a post" style="height: 100px"></textarea>
+        <label for="floatingTextarea3">Sign in to make a post :)</label></div>
+        <button class="accent-btn post-btn btn btn-light" disabled>Post</button>   
+        <% } %>   
+<!--       </div> -->
+      </form> 
     </div>
-    
-
-    
     <div class="container">
       <h3>Recent Posts</h3>
+<!--       <form> -->
+      <div class="description-posts-section">
+        <div class="category-section">
       Categories: 
 
-      <select class="form-select category-select">
+      <select id="category" class="form-select category-select">
       <option>Select One</option>
         <% for (i=0; i < categories.length; i++) { %>
        
@@ -56,21 +70,64 @@
          
         <% } %>
       </select>
-    </div>
-    
+<!--       <button class="btn btn-outline-light go-button"><img src="/img/arrow.png" alt="go button"></button> -->
+<!--       </form> -->
+
+        </div>
+        <div class="post-info-description">
+          <p>POSTER</p>
+          <p>LIKES</p>
+          <p>DISLIKES</p>
+          <p>COMMENTS</p>
+        </div>
+ 
+  
+        </div>
+      <hr>     
+    </div>    
+          
+    <div class="container" id="post-section">
     <% for (i=0; i < posts.length; i++) { %>
     <div class="container post-container">
-      <h6><%=posts[i].fname%> <%=posts[i].lname%></h6>
-      <p><%=posts[i].text%></p>
       
-      <div class="post-info">
-        <%=posts[i].likes%> Like 
-        <%=posts[i].dislikes %> Dislike
+      <div class="flex-container">
         
-        <button id="<%=posts[i].idPost%>" class="comment-btn btn btn-dark btn-sm"><%=posts[i].comments %> comments</button>
+     <div class="post-content-container">
+       <h5 class="post-title"><%=posts[i].title%></h5>
+       <p class="post-content"><%=posts[i].text%></p>
+     </div>
+
+      <div class="post-info">
+        <a class="username-post-info" href="/user/<%=posts[i].username%>"><%=posts[i].username%></a>
+    
+        <% if (typeof session.authenticated != "undefined") { %>
+         
+        <a class="post-likes btn-sm btn <%=(likedPosts.includes(posts[i].idPost)) ? 'btn-success' : 'btn-outline-success'%>" id="pl<%=posts[i].idPost%>">
+          <span id="likecount<%=posts[i].idPost%>"><%= posts[i].likes %></span>
+          Like 
+        </a>
+         
+        <a class="post-dislikes btn-sm btn <%=(dislikedPosts.includes(posts[i].idPost)) ? 'btn-danger' : 'btn-outline-danger'%>" id="pdl<%=posts[i].idPost%>">
+          <span id="dislikecount<%=posts[i].idPost%>"><%= posts[i].dislikes %></span>
+          Dislike 
+        </a> 
+      <% } else { %> 
+       <a class="btn btn-outline-success btn-sm disabled" id="pl<%=posts[i].idPost%>">
+          <span id="likecount<%=posts[i].idPost%>"><%= posts[i].likes %></span>
+         Like 
+       </a>
+        <a class="btn btn-outline-danger btn-sm disabled" id="pdl<%=posts[i].idPost%>">
+          <span id="dislikecount<%=posts[i].idPost%>"><%= posts[i].dislikes %></span>
+          Dislike
+        </a> 
+      <% } %>
+        <button id="<%=posts[i].idPost%>" class="comment-btn btn btn-outline-dark btn-sm"><%=posts[i].comments %> comments</button>
+      </div>
       </div>
     </div>
   <% } %>
+</div>
+    
 
 <script src="/js/homeScript.js"></script> 
     
